@@ -1,12 +1,15 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import * as serviceWorker from './serviceWorker';
+function createStore(){
+    // The Store would have four parts
+    // 1. The state
+    // 2. Getting the state
+    // 3. Listening to state for changes
+    // 4. Update the state
 
-ReactDOM.render(<App />, document.getElementById('root'));
+    let state
 
-// If you want your app to work offline and load faster, you can change
-// unregister() to register() below. Note this comes with some pitfalls.
-// Learn more about service workers: https://bit.ly/CRA-PWA
-serviceWorker.unregister();
+    const getState = () => state
+
+    return {
+        getState
+    }
+}
