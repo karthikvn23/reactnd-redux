@@ -1,4 +1,5 @@
-function createStore(){
+// Library code
+function createStore(reducer){
     // The Store would have four parts
     // 1. The state
     // 2. Getting the state
@@ -10,7 +11,7 @@ function createStore(){
 
     const getState = () => state
 
-    subscribe = (listener) => {
+    const subscribe = (listener) => {
         listeners.push(listener)
 
         return () => {
@@ -18,10 +19,26 @@ function createStore(){
         }
     }
 
+    const dispatch = (action) => {
+        state = reducer(state, action)
+        listeners.forEach((listener) => listener())
+    }
+
     return {
         getState,
-        subscribe
+        subscribe,
+        dispatch
     }
+}
+
+// App code (Reducer code)
+// User will decide how to update state based on business needs
+function todos(state = [], action){
+    if(action.type === 'ADD'){
+        return state.concat([action.todo])
+    }
+
+    return state
 }
 
 const store = createStore()
@@ -36,3 +53,5 @@ const unsubscribe = store.subscribe(
     }
 )
 unsubscribe()
+
+const storeReducer = createStore(todos)
