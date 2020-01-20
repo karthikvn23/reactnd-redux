@@ -33,14 +33,25 @@ function createStore(reducer){
 
 // App code (Reducer code)
 // User will decide how to update state based on business needs
+// Basically all business logic is written
+// Should be a Pure Function
 function todos(state = [], action){
     console.log(state)
-    if(action.type === 'ADD_TODO'){
-        console.log('inside ADD_TODO')
-        return state.concat([action.todo])
+    switch (action.type) {
+        case 'ADD_TODO' :
+            return state.concat([action.todo])
+        case REMOVE_TODO :
+            return state.filter(
+                (todo) => todo.id !== action.id
+            )
+        case TOGGLE_TODO :
+            return state.map(
+                (todo) => todo.id !== action.id ? todo  :
+                    Object.assign({},  todo, {  complete: !todo.complete})
+            )
+        default :
+            return state
     }
-
-    return state
 }
 
 // const store = createStore()
