@@ -54,6 +54,41 @@ function todos(state = [], action){
     }
 }
 
+function goals(state = [], action){
+    switch (action.type) {
+        case 'ADD_GOAL':
+            return state.concat([action.goal])
+        case 'REMOVE_GOAL':
+            return state.filter(
+                (goal) => goal.id !== action.id
+            )
+        default :
+            return state
+    }
+}
+
+// Reducer function is passed while creating a store
+const storeWithReducerAndDispatch = createStore(todos)
+
+// Listinening to state chagnes: Calling subscribe function and passing a function to it
+storeWithReducerAndDispatch.subscribe(
+    () => {
+        console.log('The new state is', storeWithReducerAndDispatch.getState())
+    }
+)
+
+// Dispatch --> Used when ever we want to update the state, action(type of event occurring) is passed for performing update
+storeWithReducerAndDispatch.dispatch(
+        {
+            type: 'ADD_TODO',
+            todo:{
+                id: 0,
+                name: 'Learn Redux',
+                complete: false
+            }
+        }
+)
+
 // const store = createStore()
 // store.subscribe(
 //     () => {
@@ -66,23 +101,3 @@ function todos(state = [], action){
 //     }
 // )
 // unsubscribe()
-
-const storeWithReducerAndDispatch = createStore(todos)
-storeWithReducerAndDispatch.subscribe(
-    () => {
-        console.log('The new state is', storeWithReducerAndDispatch.getState())
-    }
-)
-
-storeWithReducerAndDispatch.dispatch(
-        {
-            type: 'ADD_TODO',
-            todo:{
-                id: 0,
-                name: 'Learn Redux',
-                complete: false
-            }
-        }
-)
-
-// Dispatch --> Used when ever we want to update the state, action(type of event occurring) is passed for performing update
