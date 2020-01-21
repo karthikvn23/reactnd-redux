@@ -19,6 +19,9 @@ function createStore(reducer){
         }
     }
 
+    // Dispatch is doing two things
+    // 1. Calling the reducer function
+    // 2. Calling all the listener functions so that all stores subscribed can get to know about the state
     const dispatch = (action) => {
         state = reducer(state, action)
         listeners.forEach((listener) => listener())
