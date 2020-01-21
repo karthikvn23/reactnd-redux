@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="138">
-              <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+            <state relative-caret-position="365">
+              <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
             </state>
           </provider>
         </entry>
@@ -59,8 +59,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="y" value="26" />
-    <option name="width" value="1440" />
+    <option name="x" value="725" />
+    <option name="y" value="23" />
+    <option name="width" value="715" />
     <option name="height" value="797" />
   </component>
   <component name="ProjectView">
@@ -122,7 +123,7 @@
       <option name="presentableId" value="Default" />
       <updated>1578991644251</updated>
       <workItem from="1578991646101" duration="5040000" />
-      <workItem from="1579250917973" duration="3482000" />
+      <workItem from="1579250917973" duration="6172000" />
     </task>
     <task id="LOCAL-00001" summary="adding listeners, subscribe &amp; un-subscribe">
       <created>1578993269170</created>
@@ -138,14 +139,36 @@
       <option name="project" value="LOCAL" />
       <updated>1579253915832</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="complete flow of action, reducer and dispatch">
+      <created>1579533515635</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1579533515635</updated>
+    </task>
+    <task id="LOCAL-00004" summary="added additional toDo to be handled">
+      <created>1579536053832</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1579536053832</updated>
+    </task>
+    <task id="LOCAL-00005" summary="added more documentation">
+      <created>1579571831753</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1579571831753</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="8522000" />
+    <option name="totallyTimeSpent" value="11212000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="23" width="1440" height="797" extended-state="6" />
+    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.24973376" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -163,7 +186,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.32844576" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.32844576" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32946634" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -215,7 +238,10 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="adding listeners, subscribe &amp; un-subscribe" />
     <MESSAGE value="incorporated reducers" />
-    <option name="LAST_COMMIT_MESSAGE" value="incorporated reducers" />
+    <MESSAGE value="complete flow of action, reducer and dispatch" />
+    <MESSAGE value="added additional toDo to be handled" />
+    <MESSAGE value="added more documentation" />
+    <option name="LAST_COMMIT_MESSAGE" value="added more documentation" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/App.css">
@@ -223,8 +249,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="138">
-          <caret line="64" lean-forward="true" selection-start-line="64" selection-end-line="64" />
+        <state relative-caret-position="365">
+          <caret line="46" column="26" selection-start-line="46" selection-start-column="26" selection-end-line="46" selection-end-column="26" />
         </state>
       </provider>
     </entry>

@@ -40,11 +40,11 @@ function todos(state = [], action){
     switch (action.type) {
         case 'ADD_TODO' :
             return state.concat([action.todo])
-        case REMOVE_TODO :
+        case 'REMOVE_TODO' :
             return state.filter(
                 (todo) => todo.id !== action.id
             )
-        case TOGGLE_TODO :
+        case 'TOGGLE_TODO' :
             return state.map(
                 (todo) => todo.id !== action.id ? todo  :
                     Object.assign({},  todo, {  complete: !todo.complete})
@@ -67,8 +67,15 @@ function goals(state = [], action){
     }
 }
 
+function app (state = {}, action) {
+    return {
+        todos: todos(state.todos, action),
+        goals: goals(state.goals, action),
+    }
+}
+
 // Reducer function is passed while creating a store
-const storeWithReducerAndDispatch = createStore(todos)
+const storeWithReducerAndDispatch = createStore(app)
 
 // Listinening to state chagnes: Calling subscribe function and passing a function to it
 storeWithReducerAndDispatch.subscribe(
@@ -88,6 +95,64 @@ storeWithReducerAndDispatch.dispatch(
             }
         }
 )
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'ADD_TODO',
+    todo: {
+        id: 0,
+        name: 'Walk the dog',
+        complete: false,
+    }
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'ADD_TODO',
+    todo: {
+        id: 1,
+        name: 'Wash the car',
+        complete: false,
+    }
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'ADD_TODO',
+    todo: {
+        id: 2,
+        name: 'Go to the gym',
+        complete: true,
+    }
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'REMOVE_TODO',
+    id: 1
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'TOGGLE_TODO',
+    id: 0
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'ADD_GOAL',
+    goal: {
+        id: 0,
+        name: 'Learn Redux'
+    }
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'ADD_GOAL',
+    goal: {
+        id: 1,
+        name: 'Lose 20 pounds'
+    }
+})
+
+storeWithReducerAndDispatch.dispatch({
+    type: 'REMOVE_GOAL',
+    id: 0
+})
 
 // const store = createStore()
 // store.subscribe(
