@@ -20,6 +20,11 @@
     </div>
 
     <script type="text/javascript">
+
+        function generateId () {
+            return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
+        }
+
         // Library code
         function createStore(reducer){
             // The Store would have four parts
@@ -104,7 +109,7 @@
         // Basically all business logic is written
         // Should be a Pure Function
         function todos(state = [], action){
-            console.log(state)
+            // console.log(state)
             switch (action.type) {
                 case ADD_TODO :
                     return state.concat([action.todo])
@@ -145,7 +150,7 @@
         // Reducer function is passed while creating a store
         const storeWithReducerAndDispatch = createStore(app)
 
-        // Listinening to state chagnes: Calling subscribe function and passing a function to it
+        // Listinening to state changes: Calling subscribe function and passing a function to it
         storeWithReducerAndDispatch.subscribe(
             () => {
                 console.log('The new state is', storeWithReducerAndDispatch.getState())
@@ -153,77 +158,77 @@
         )
 
         // Dispatch --> Used when ever we want to update the state, action(type of event occurring) is passed for performing update
-        storeWithReducerAndDispatch.dispatch(
-            addTodoAction(
-                {
-                    id: 0,
-                    name: 'Walk the dog',
-                    complete: false,
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            addTodoAction(
-                {
-                    id: 1,
-                    name: 'Wash the car',
-                    complete: false,
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            addTodoAction(
-                {
-                    id: 2,
-                    name: 'Go to the gym',
-                    complete: true,
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            removeTodoAction(
-                {
-                    id: 1
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            toggleTodoAction(
-                {
-                    id: 0
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            addGoalAction(
-                {
-                    id: 0,
-                    name: 'Learn Redux'
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            addGoalAction(
-                {
-                    id: 1,
-                    name: 'Lose 20 pounds'
-                }
-            )
-        )
-
-        storeWithReducerAndDispatch.dispatch(
-            removeGoalAction(
-                {
-                    id: 0
-                }
-            )
-        )
+        // storeWithReducerAndDispatch.dispatch(
+        //     addTodoAction(
+        //         {
+        //             id: 0,
+        //             name: 'Walk the dog',
+        //             complete: false,
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     addTodoAction(
+        //         {
+        //             id: 1,
+        //             name: 'Wash the car',
+        //             complete: false,
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     addTodoAction(
+        //         {
+        //             id: 2,
+        //             name: 'Go to the gym',
+        //             complete: true,
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     removeTodoAction(
+        //         {
+        //             id: 1
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     toggleTodoAction(
+        //         {
+        //             id: 0
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     addGoalAction(
+        //         {
+        //             id: 0,
+        //             name: 'Learn Redux'
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     addGoalAction(
+        //         {
+        //             id: 1,
+        //             name: 'Lose 20 pounds'
+        //         }
+        //     )
+        // )
+        //
+        // storeWithReducerAndDispatch.dispatch(
+        //     removeGoalAction(
+        //         {
+        //             id: 0
+        //         }
+        //     )
+        // )
 
         // const store = createStore()
         // store.subscribe(
@@ -237,6 +242,41 @@
         //     }
         // )
         // unsubscribe()
+        function addTodo() {
+            const input = document.getElementById('todo')
+            const name = input.value
+            input.value = ''
+
+            storeWithReducerAndDispatch.dispatch(
+                addTodoAction(
+                    {
+                        id: generateId(),
+                        name,
+                        complete: false,
+                    }
+                )
+            )
+        }
+        
+        function addGoal() {
+            const input = document.getElementById('goal')
+            const name = input.value
+            input.value = ''
+
+            storeWithReducerAndDispatch.dispatch(
+                addGoalAction(
+                    {
+                        id: generateId(),
+                        name,
+                    }
+                )
+            )
+        }
+
+        document.getElementById('todoBtn').addEventListener('click', addTodo)
+
+        document.getElementById('goalBtn').addEventListener('click', addGoal)
+
     </script>
 
 </body>
