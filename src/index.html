@@ -132,6 +132,7 @@
                 case ADD_GOAL:
                     return state.concat([action.goal])
                 case REMOVE_GOAL:
+                    console.log('before', state)
                     return state.filter(
                         (goal) => goal.id !== action.id
                     )
@@ -157,6 +158,8 @@
 
                 document.getElementById('todos').innerHTML = ''
                 document.getElementById('goals').innerHTML = ''
+
+                console.log('goals', goals)
 
                 todos.forEach(addTodoToDOM)
                 goals.forEach(addGoalToDOM)
@@ -263,7 +266,7 @@
                 )
             )
         }
-        
+
         function addGoal() {
             const input = document.getElementById('goal')
             const name = input.value
@@ -283,10 +286,37 @@
 
         document.getElementById('goalBtn').addEventListener('click', addGoal)
 
+        function createRemoveButton(onClick) {
+            const removeBtn = document.createElement('button')
+            removeBtn.innerHTML = 'X'
+            removeBtn.addEventListener('click', onClick)
+            return removeBtn
+        }
+
         function addTodoToDOM(todo) {
             const node = document.createElement('li')
             const text = document.createTextNode(todo.name)
+
+            const removeBtn = createRemoveButton(
+                () => {
+                    storeWithReducerAndDispatch.dispatch(
+                        removeTodoAction(todo.id)
+                    )
+                }
+            )
+
             node.appendChild(text)
+            node.appendChild(removeBtn)
+            node.style.textDecoration = todo.complete ? 'line-through' : 'none'
+            node.addEventListener(
+                'click', () => {
+                    storeWithReducerAndDispatch.dispatch(
+                        toggleTodoAction(
+                            (todo.id)
+                        )
+                    )
+                }
+            )
 
             document.getElementById('todos').appendChild(node)
         }
@@ -294,7 +324,15 @@
         function addGoalToDOM(goal) {
             const node = document.createElement('li')
             const text = document.createTextNode(goal.name)
+            const removeBtn = createRemoveButton(
+                () => {
+                    storeWithReducerAndDispatch.dispatch(
+                        removeGoalAction(goal.id)
+                    )
+                }
+            )
             node.appendChild(text)
+            node.appendChild(removeBtn)
 
             document.getElementById('goals').appendChild(node)
         }
