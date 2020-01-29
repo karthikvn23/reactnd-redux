@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Todos Goals</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/redux/3.7.2/redux.min.js"></script>
 </head>
 <body>
     <div>
@@ -23,42 +24,6 @@
 
         function generateId () {
             return Math.random().toString(36).substring(2) + (new Date()).getTime().toString(36);
-        }
-
-        // Library code
-        function createStore(reducer){
-            // The Store would have four parts
-            // 1. The state
-            // 2. Getting the state
-            // 3. Listening to state for changes
-            // 4. Update the state
-
-            let state
-            let listeners = []
-
-            const getState = () => state
-
-            const subscribe = (listener) => {
-                listeners.push(listener)
-
-                return () => {
-                    listeners = listeners.filter((l) => l !== listener)
-                }
-            }
-
-            // Dispatch is doing two things
-            // 1. Calling the reducer function
-            // 2. Calling all the listener functions so that all stores subscribed can get to know about the state
-            const dispatch = (action) => {
-                state = reducer(state, action)
-                listeners.forEach((listener) => listener())
-            }
-
-            return {
-                getState,
-                subscribe,
-                dispatch
-            }
         }
 
         const ADD_TODO = 'ADD_TODO'
@@ -141,15 +106,11 @@
             }
         }
 
-        function app (state = {}, action) {
-            return {
-                todos: todos(state.todos, action),
-                goals: goals(state.goals, action),
-            }
-        }
-
         // Reducer function is passed while creating a store
-        const storeWithReducerAndDispatch = createStore(app)
+        const storeWithReducerAndDispatch = Redux.createStore(Redux.combineReducers({
+            todos,
+            goals
+            }))
 
         // Listening to state changes: Calling subscribe function and passing a function to it
         storeWithReducerAndDispatch.subscribe(
