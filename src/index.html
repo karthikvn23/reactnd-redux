@@ -106,9 +106,9 @@
             }
         }
 
-        function checkAndDispatch(store, action) {
+        const checker = (store) => (next) => (action) => {
             if( action.type === ADD_TODO
-            && action.todo.name.toLocaleLowerCase().includes('bitcoin')){
+                && action.todo.name.toLocaleLowerCase().includes('bitcoin')){
                 alert('Nope. This is a bad idea !')
             }
 
@@ -117,15 +117,23 @@
                 alert('Nope. This is a bad idea !')
             }
 
-            return store.dispatch(action)
+            return next(action)
+        }
 
+        const logger = (store) => (next) => (action) => {
+            console.group(action.type)
+                console.log('The action:', action)
+                const result = next(action)
+                console.log('New state', store.getState())
+            console.groupEnd()
+            return result
         }
 
         // Reducer function is passed while creating a store
         const storeWithReducerAndDispatch = Redux.createStore(Redux.combineReducers({
             todos,
             goals
-            }))
+            }), Redux.applyMiddleware(checker, logger))
 
         // Listening to state changes: Calling subscribe function and passing a function to it
         storeWithReducerAndDispatch.subscribe(
@@ -232,7 +240,7 @@
             const name = input.value
             input.value = ''
 
-            checkAndDispatch(storeWithReducerAndDispatch,
+            storeWithReducerAndDispatch.dispatch(
                 addTodoAction(
                     {
                         id: generateId(),
@@ -248,7 +256,7 @@
             const name = input.value
             input.value = ''
 
-            checkAndDispatch(storeWithReducerAndDispatch,
+            storeWithReducerAndDispatch.dispatch(
                 addGoalAction(
                     {
                         id: generateId(),
