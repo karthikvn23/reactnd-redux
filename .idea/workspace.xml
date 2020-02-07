@@ -20,8 +20,17 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="699">
-              <caret line="429" column="43" selection-start-line="429" selection-start-column="43" selection-end-line="429" selection-end-column="43" />
+            <state relative-caret-position="497">
+              <caret line="300" column="43" selection-start-line="300" selection-start-column="43" selection-end-line="300" selection-end-column="43" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/index.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="371">
+              <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
             </state>
           </provider>
         </entry>
@@ -53,6 +62,8 @@
       <find>generated</find>
       <find>checkand</find>
       <find>alert</find>
+      <find>X</find>
+      <find>create</find>
     </findStrings>
     <replaceStrings>
       <replace>ADD_TODO</replace>
@@ -75,9 +86,9 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="857" />
+    <option name="x" value="835" />
     <option name="y" value="23" />
-    <option name="width" value="1063" />
+    <option name="width" value="1085" />
     <option name="height" value="977" />
   </component>
   <component name="ProjectView">
@@ -144,7 +155,9 @@
       <workItem from="1579859259476" duration="4829000" />
       <workItem from="1580117544707" duration="927000" />
       <workItem from="1580286403707" duration="3958000" />
-      <workItem from="1580347233832" duration="6428000" />
+      <workItem from="1580347233832" duration="11906000" />
+      <workItem from="1581050353041" duration="1036000" />
+      <workItem from="1581068041419" duration="1312000" />
     </task>
     <task id="LOCAL-00001" summary="adding listeners, subscribe &amp; un-subscribe">
       <created>1578993269170</created>
@@ -251,11 +264,25 @@
       <option name="project" value="LOCAL" />
       <updated>1580697672854</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="initial checkin for using redux with html">
+      <created>1580723149480</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1580723149480</updated>
+    </task>
+    <task id="LOCAL-00017" summary="second checkin for using redux with html">
+      <created>1580727061642</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1580727061642</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="29489000" />
+    <option name="totallyTimeSpent" value="37315000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -267,7 +294,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="857" y="23" width="1063" height="977" extended-state="0" />
+    <frame x="835" y="23" width="1085" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.3613963" />
@@ -286,7 +313,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32946634" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.30498534" />
+      <window_info anchor="bottom" id="Version Control" order="8" weight="0.31231672" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32946634" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -317,7 +344,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32946634" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.30498534" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.31231672" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32946634" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -350,18 +377,13 @@
     <MESSAGE value="making use of redux library" />
     <MESSAGE value="added middleware sample code" />
     <MESSAGE value="applying middleware using redux library" />
-    <option name="LAST_COMMIT_MESSAGE" value="applying middleware using redux library" />
+    <MESSAGE value="initial checkin for using redux with html" />
+    <MESSAGE value="second checkin for using redux with html" />
+    <option name="LAST_COMMIT_MESSAGE" value="second checkin for using redux with html" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/App.css">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
@@ -373,10 +395,17 @@
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="371">
+          <caret line="25" column="38" selection-start-line="25" selection-start-column="38" selection-end-line="25" selection-end-column="38" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="699">
-          <caret line="429" column="43" selection-start-line="429" selection-start-column="43" selection-end-line="429" selection-end-column="43" />
+        <state relative-caret-position="497">
+          <caret line="300" column="43" selection-start-line="300" selection-start-column="43" selection-end-line="300" selection-end-column="43" />
         </state>
       </provider>
     </entry>

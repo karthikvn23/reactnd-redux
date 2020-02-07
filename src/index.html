@@ -7,6 +7,7 @@
     <script src="https://unpkg.com/react@16.3.0-alpha.1/umd/react.development.js"></script>
     <script src="https://unpkg.com/react-dom@16.3.0-alpha.1/umd/react-dom.development.js"></script>
     <script src="https://unpkg.com/babel-standalone@6.15.0/babel.min.js"></script>
+    <script src="https://tylermcginnis.com/goals-todos-api/index.js"></script>
 </head>
 <body>
     <div id="app"></div>
@@ -24,11 +25,21 @@
         const ADD_GOAL = 'ADD_GOAL'
         const REMOVE_GOAL = 'REMOVE_GOAL'
 
+        const RECEIVE_DATA = 'RECEIVE_DATA'
+
         // Action Creators
         function addTodoAction(todo) {
             return {
                 type: ADD_TODO,
                 todo
+            }
+        }
+
+        function receiveDataAction(todos, goals){
+            return {
+                type: RECEIVE_DATA,
+                todos,
+                goals,
             }
         }
 
@@ -78,6 +89,8 @@
                         (todo) => todo.id !== action.id ? todo  :
                             Object.assign({},  todo, {  complete: !todo.complete})
                     )
+                case RECEIVE_DATA:
+                    return action.todos
                 default :
                     return state
             }
@@ -92,7 +105,18 @@
                     return state.filter(
                         (goal) => goal.id !== action.id
                     )
+                case RECEIVE_DATA:
+                    return action.goals
                 default :
+                    return state
+            }
+        }
+
+        function loading(state = true, action) {
+            switch (action.type) {
+                case RECEIVE_DATA:
+                    return false
+                default:
                     return state
             }
         }
@@ -123,7 +147,8 @@
         // Reducer function is passed while creating a store
         const storeWithReducerAndDispatch = Redux.createStore(Redux.combineReducers({
             todos,
-            goals
+            goals,
+            loading
             }), Redux.applyMiddleware(checker, logger))
 
     </script>
@@ -258,12 +283,24 @@
             componentDidMount() {
                 const { storeWithReducerAndDispatch } = this.props
 
+                Promise.all([
+                    API.fetchTodos(),
+                    API.fetchGoals()
+                ]).then(([ todos, goals ]) => {
+                    storeWithReducerAndDispatch.dispatch(receiveDataAction(todos, goals))
+                })
+
                 storeWithReducerAndDispatch.subscribe(()=> this.forceUpdate())
             }
 
             render(){
                 const { storeWithReducerAndDispatch } = this.props
-                const { todos, goals } = storeWithReducerAndDispatch.getState()
+                const { todos, goals, loading } = storeWithReducerAndDispatch.getState()
+
+                if(loading === true){
+                    return <h3>Loading</h3>
+                }
+
                 return(
                     <div>
                         <Todos todos={todos} storeWithReducerAndDispatch={this.props.storeWithReducerAndDispatch}/>
