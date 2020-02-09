@@ -207,18 +207,17 @@
 
             addItem = (e) => {
                 e.preventDefault()
-                const name = this.input.value
-                this.input.value = ''
-
-                this.props.storeWithReducerAndDispatch.dispatch(
-                    addTodoAction(
-                        {
-                            id: generateId(),
-                            name,
-                            complete: false,
+                return API.saveTodo(this.input.value)
+                    .then(
+                        (todo) => {
+                            this.props.storeWithReducerAndDispatch.dispatch(addTodoAction(todo))
+                            this.input.value = ''
+                        }
+                    ).catch(
+                        () => {
+                            alert('An error occurred. Please try again')
                         }
                     )
-                )
 
             }
 
@@ -259,17 +258,18 @@
 
             addItem = (e) => {
                 e.preventDefault()
-                const name = this.input.value
-                this.input.value = ''
 
-                this.props.storeWithReducerAndDispatch.dispatch(
-                    addGoalAction(
-                        {
-                            id: generateId(),
-                            name,
+                return  API.saveGoal(this.input.value)
+                    .then(
+                        (goal) => {
+                            this.props.storeWithReducerAndDispatch.dispatch(addGoalAction(goal))
+                            this.input.value = ''
+                        }
+                    ).catch(
+                        () => {
+                            alert('An alert occurred. Please try again')
                         }
                     )
-                )
 
             }
 
