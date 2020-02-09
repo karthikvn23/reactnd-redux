@@ -181,17 +181,28 @@
         class Todos extends React.Component{
 
             removeItem = (todo) => {
-                this.props.storeWithReducerAndDispatch.dispatch(
-                        removeTodoAction(
-                            (todo.id)
-                        )
-                )
+
+                this.props.storeWithReducerAndDispatch.dispatch(removeTodoAction(todo.id))
+
+                return API.deleteTodo(todo.id)
+                    .catch(
+                        () => {
+                            this.props.storeWithReducerAndDispatch.dispatch(addTodoAction(todo))
+                            alert("An Error occurred")
+                        }
+                    )
             }
 
             toggleItem = (id) => {
-                this.props.storeWithReducerAndDispatch.dispatch(
-                    toggleTodoAction(id)
-                )
+                this.props.storeWithReducerAndDispatch.dispatch(toggleTodoAction(id))
+
+                return API.saveTodoToggle(id)
+                    .catch(
+                        () => {
+                            this.props.storeWithReducerAndDispatch.dispatch(toggleTodoAction(id))
+                            alert("An Error occurred")
+                        }
+                    )
             }
 
             addItem = (e) => {
@@ -235,11 +246,15 @@
         class Goals extends React.Component{
 
             removeItem = (goal) => {
-                this.props.storeWithReducerAndDispatch.dispatch(
-                    removeGoalAction(
-                        (goal.id)
+                this.props.storeWithReducerAndDispatch.dispatch(removeGoalAction(goal.id))
+
+                return API.deleteGoal(goal.id)
+                    .catch(
+                        () => {
+                            this.props.storeWithReducerAndDispatch.dispatch(addGoalAction(goal))
+                            alert("An Error occurred")
+                        }
                     )
-                )
             }
 
             addItem = (e) => {
