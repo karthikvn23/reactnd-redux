@@ -85,6 +85,37 @@
                     )
             }
         }
+        
+        function handleAddGoal(name, cb) {
+            return (dispatch) => {
+                API.saveGoal(name)
+                    .then(
+                        (goal) => {
+                            dispatch(addGoalAction(goal))
+                            cb()
+                        }
+                    ).catch(
+                    () => {
+                        alert('An alert occurred. Please try again')
+                    }
+                )
+            }
+        }
+
+        function handleDeleteGoal(goal) {
+            return (dispatch) => {
+
+                dispatch(removeGoalAction(goal.id))
+
+                API.deleteGoal(goal.id)
+                    .catch(
+                        () => {
+                            dispatch(addGoalAction(goal))
+                            alert("An Error occurred")
+                        }
+                    )
+            }
+        }
 
         // App code (Reducer code)
         // User will decide how to update state based on business needs
@@ -252,31 +283,17 @@
         class Goals extends React.Component{
 
             removeItem = (goal) => {
-                this.props.storeWithReducerAndDispatch.dispatch(removeGoalAction(goal.id))
-
-                return API.deleteGoal(goal.id)
-                    .catch(
-                        () => {
-                            this.props.storeWithReducerAndDispatch.dispatch(addGoalAction(goal))
-                            alert("An Error occurred")
-                        }
-                    )
+                this.props.storeWithReducerAndDispatch.dispatch(handleDeleteGoal(goal))
             }
 
             addItem = (e) => {
                 e.preventDefault()
-
-                return  API.saveGoal(this.input.value)
-                    .then(
-                        (goal) => {
-                            this.props.storeWithReducerAndDispatch.dispatch(addGoalAction(goal))
-                            this.input.value = ''
-                        }
-                    ).catch(
-                        () => {
-                            alert('An alert occurred. Please try again')
-                        }
+                
+                this.props.storeWithReducerAndDispatch.dispatch(handleAddGoal(
+                    this.input.value,
+                    () => this.input.value = ''
                     )
+                )
 
             }
 
