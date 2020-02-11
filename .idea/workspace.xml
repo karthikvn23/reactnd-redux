@@ -20,8 +20,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="439">
-              <caret line="202" column="52" selection-start-line="202" selection-start-column="52" selection-end-line="202" selection-end-column="52" />
+            <state relative-caret-position="384">
+              <caret line="155" column="43" lean-forward="true" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
             </state>
           </provider>
         </entry>
@@ -68,6 +68,7 @@
       <find>REMOVE_TODO</find>
       <find>og</find>
       <find>console.og</find>
+      <find>addItem</find>
     </findStrings>
     <replaceStrings>
       <replace>ADD_TODO</replace>
@@ -90,10 +91,10 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="685" />
+    <option name="x" value="908" />
     <option name="y" value="23" />
-    <option name="width" value="755" />
-    <option name="height" value="797" />
+    <option name="width" value="1012" />
+    <option name="height" value="977" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -162,7 +163,8 @@
       <workItem from="1580347233832" duration="11906000" />
       <workItem from="1581050353041" duration="1036000" />
       <workItem from="1581068041419" duration="2058000" />
-      <workItem from="1581228148225" duration="1113000" />
+      <workItem from="1581228148225" duration="2633000" />
+      <workItem from="1581411368584" duration="1551000" />
     </task>
     <task id="LOCAL-00001" summary="adding listeners, subscribe &amp; un-subscribe">
       <created>1578993269170</created>
@@ -290,11 +292,25 @@
       <option name="project" value="LOCAL" />
       <updated>1581069719323</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="feat: making async call for remove actions&#10;feat: added optimistic updates where in an item is removed from store for remove action, and added back if an error occurs">
+      <created>1581229480276</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1581229480276</updated>
+    </task>
+    <task id="LOCAL-00020" summary="feat: calling async functions to add items - todo, goal">
+      <created>1581230298081</created>
+      <option name="number" value="00020" />
+      <option name="presentableId" value="LOCAL-00020" />
+      <option name="project" value="LOCAL" />
+      <updated>1581230298081</updated>
+    </task>
+    <option name="localTasksCounter" value="21" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="39174000" />
+    <option name="totallyTimeSpent" value="42245000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -306,8 +322,7 @@
     </todo-panel>
   </component>
   <component name="ToolWindowManager">
-    <frame x="685" y="23" width="755" height="797" extended-state="0" />
-    <editor active="true" />
+    <frame x="908" y="23" width="1012" height="977" extended-state="0" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" weight="0.3613963" />
       <window_info id="npm" order="1" side_tool="true" />
@@ -325,7 +340,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32946634" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" order="8" weight="0.40881458" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.39327148" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32946634" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -356,7 +371,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32946634" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
-      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.40881458" />
+      <window_info active="true" anchor="bottom" id="Version Control" order="8" visible="true" weight="0.39327148" />
       <window_info anchor="bottom" id="Database Changes" order="9" />
       <window_info anchor="bottom" id="Terminal" order="10" weight="0.32946634" />
       <window_info anchor="bottom" id="Event Log" order="11" side_tool="true" />
@@ -392,7 +407,9 @@
     <MESSAGE value="initial checkin for using redux with html" />
     <MESSAGE value="second checkin for using redux with html" />
     <MESSAGE value="feat: async call implementation&#10;feat: displaying loading indicator for async call" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: async call implementation&#10;feat: displaying loading indicator for async call" />
+    <MESSAGE value="feat: making async call for remove actions&#10;feat: added optimistic updates where in an item is removed from store for remove action, and added back if an error occurs" />
+    <MESSAGE value="feat: calling async functions to add items - todo, goal" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: calling async functions to add items - todo, goal" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/src/App.css">
@@ -410,8 +427,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="439">
-          <caret line="202" column="52" selection-start-line="202" selection-start-column="52" selection-end-line="202" selection-end-column="52" />
+        <state relative-caret-position="384">
+          <caret line="155" column="43" lean-forward="true" selection-start-line="155" selection-start-column="43" selection-end-line="155" selection-end-column="43" />
         </state>
       </provider>
     </entry>
