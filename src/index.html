@@ -71,6 +71,38 @@
                 id
             }
         }
+
+        function handleAddTodo(name, cb) {
+
+            return (dispatch) => {
+                return API.saveTodo(name)
+                    .then(
+                        (todo) => {
+                            dispatch(addTodoAction(todo))
+                            cb()
+                        }
+                    ).catch(
+                        () => {
+                            alert('An error occurred. Please try again')
+                        }
+                    )
+            }
+        }
+
+        function handleToggleItem(id) {
+            return (dispatch) => {
+
+                dispatch(toggleTodoAction(id))
+
+                return API.saveTodoToggle(id)
+                    .catch(
+                        () => {
+                            dispatch(toggleTodoAction(id))
+                            alert("An Error occurred")
+                        }
+                    )
+            }
+        }
         
         function handleDeleteTodo(todo) {
             return (dispatch) => {
@@ -226,37 +258,23 @@
 
         class Todos extends React.Component{
 
-            removeItem = (todo) => {
+            addItem = (e) => {
+                e.preventDefault()
+                this.props.storeWithReducerAndDispatch.dispatch(
+                    handleAddTodo(
+                        this.input.value,
+                        () => this.input.value = ''
+                    )
+                )
 
+            }
+
+            removeItem = (todo) => {
                 this.props.storeWithReducerAndDispatch.dispatch(handleDeleteTodo(todo))
             }
 
             toggleItem = (id) => {
-                this.props.storeWithReducerAndDispatch.dispatch(toggleTodoAction(id))
-
-                return API.saveTodoToggle(id)
-                    .catch(
-                        () => {
-                            this.props.storeWithReducerAndDispatch.dispatch(toggleTodoAction(id))
-                            alert("An Error occurred")
-                        }
-                    )
-            }
-
-            addItem = (e) => {
-                e.preventDefault()
-                return API.saveTodo(this.input.value)
-                    .then(
-                        (todo) => {
-                            this.props.storeWithReducerAndDispatch.dispatch(addTodoAction(todo))
-                            this.input.value = ''
-                        }
-                    ).catch(
-                        () => {
-                            alert('An error occurred. Please try again')
-                        }
-                    )
-
+                this.props.storeWithReducerAndDispatch.dispatch(handleToggleItem(id))
             }
 
             render() {
