@@ -148,6 +148,18 @@
                     )
             }
         }
+        
+        function handleInitialData() {
+            return (dispatch) => {
+                return Promise.all([
+                    API.fetchTodos(),
+                    API.fetchGoals()
+                ]).then(([ todos, goals ]) => {
+                    dispatch(receiveDataAction(todos, goals))
+                })
+            }
+
+        }
 
         // App code (Reducer code)
         // User will decide how to update state based on business needs
@@ -340,12 +352,7 @@
             componentDidMount() {
                 const { storeWithReducerAndDispatch } = this.props
 
-                Promise.all([
-                    API.fetchTodos(),
-                    API.fetchGoals()
-                ]).then(([ todos, goals ]) => {
-                    storeWithReducerAndDispatch.dispatch(receiveDataAction(todos, goals))
-                })
+                storeWithReducerAndDispatch.dispatch(handleInitialData())
 
                 storeWithReducerAndDispatch.subscribe(()=> this.forceUpdate())
             }
