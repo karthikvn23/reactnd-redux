@@ -374,8 +374,37 @@
             }
         }
 
+        class ConnectedApp extends React.Component {
+            render() {
+                return (
+                    <Context.Consumer>
+                        {
+                            (storeWithReducerAndDispatch) => (
+                                <App storeWithReducerAndDispatch={storeWithReducerAndDispatch}/>
+                            )
+                        }
+                    </Context.Consumer>
+                )
+            }
+        }
+
+        const Context = React.createContext()
+
+        class Provider extends React.Component {
+            render() {
+                return (
+                    <Context.Provider value={this.props.storeWithReducerAndDispatch}>
+                        {this.props.children}
+                    </Context.Provider>
+                )
+            }
+        }
+
+
         ReactDOM.render(
-            <App storeWithReducerAndDispatch={storeWithReducerAndDispatch}/>,
+            <Provider storeWithReducerAndDispatch={storeWithReducerAndDispatch}>
+                <ConnectedApp/>
+            </Provider>,
             document.getElementById('app')
         )
     </script>
