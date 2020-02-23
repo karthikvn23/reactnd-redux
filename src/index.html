@@ -235,7 +235,7 @@
         }
 
         // Reducer function is passed while creating a store
-        const storeWithReducerAndDispatch = Redux.createStore(Redux.combineReducers({
+        const store = Redux.createStore(Redux.combineReducers({
             todos,
             goals,
             loading
@@ -272,7 +272,7 @@
 
             addItem = (e) => {
                 e.preventDefault()
-                this.props.storeWithReducerAndDispatch.dispatch(
+                this.props.store.dispatch(
                     handleAddTodo(
                         this.input.value,
                         () => this.input.value = ''
@@ -282,11 +282,11 @@
             }
 
             removeItem = (todo) => {
-                this.props.storeWithReducerAndDispatch.dispatch(handleDeleteTodo(todo))
+                this.props.store.dispatch(handleDeleteTodo(todo))
             }
 
             toggleItem = (id) => {
-                this.props.storeWithReducerAndDispatch.dispatch(handleToggleItem(id))
+                this.props.store.dispatch(handleToggleItem(id))
             }
 
             render() {
@@ -313,13 +313,13 @@
         class Goals extends React.Component{
 
             removeItem = (goal) => {
-                this.props.storeWithReducerAndDispatch.dispatch(handleDeleteGoal(goal))
+                this.props.store.dispatch(handleDeleteGoal(goal))
             }
 
             addItem = (e) => {
                 e.preventDefault()
                 
-                this.props.storeWithReducerAndDispatch.dispatch(handleAddGoal(
+                this.props.store.dispatch(handleAddGoal(
                     this.input.value,
                     () => this.input.value = ''
                     )
@@ -350,16 +350,16 @@
 
         class App extends React.Component {
             componentDidMount() {
-                const { storeWithReducerAndDispatch } = this.props
+                const { store } = this.props
 
-                storeWithReducerAndDispatch.dispatch(handleInitialData())
+                store.dispatch(handleInitialData())
 
-                storeWithReducerAndDispatch.subscribe(()=> this.forceUpdate())
+                store.subscribe(()=> this.forceUpdate())
             }
 
             render(){
-                const { storeWithReducerAndDispatch } = this.props
-                const { todos, goals, loading } = storeWithReducerAndDispatch.getState()
+                const { store } = this.props
+                const { todos, goals, loading } = store.getState()
 
                 if(loading === true){
                     return <h3>Loading</h3>
@@ -367,8 +367,8 @@
 
                 return(
                     <div>
-                        <Todos todos={todos} storeWithReducerAndDispatch={this.props.storeWithReducerAndDispatch}/>
-                        <Goals goals={goals} storeWithReducerAndDispatch={this.props.storeWithReducerAndDispatch}/>
+                        <Todos todos={todos} store={this.props.store}/>
+                        <Goals goals={goals} store={this.props.store}/>
                     </div>
                 )
             }
@@ -379,8 +379,8 @@
                 return (
                     <Context.Consumer>
                         {
-                            (storeWithReducerAndDispatch) => (
-                                <App storeWithReducerAndDispatch={storeWithReducerAndDispatch}/>
+                            (store) => (
+                                <App store={store}/>
                             )
                         }
                     </Context.Consumer>
@@ -393,7 +393,7 @@
         class Provider extends React.Component {
             render() {
                 return (
-                    <Context.Provider value={this.props.storeWithReducerAndDispatch}>
+                    <Context.Provider value={this.props.store}>
                         {this.props.children}
                     </Context.Provider>
                 )
@@ -402,7 +402,7 @@
 
 
         ReactDOM.render(
-            <Provider storeWithReducerAndDispatch={storeWithReducerAndDispatch}>
+            <Provider store={store}>
                 <ConnectedApp/>
             </Provider>,
             document.getElementById('app')
